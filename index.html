@@ -4,85 +4,721 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gerard Barile</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* VS Code Dark Theme + Code Aesthetic */
-    body {
+    *, *::before, *::after {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background-color: #ffffff;
-      color: #000000;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    html {
+      font-size: 62.5%;
+    }
+
+    body {
+      background-color: rgb(235, 235, 235);
+      color: rgb(28, 28, 28);
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 400;
+      line-height: 1;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      justify-content: start;
-      min-height: 100vh;
-      padding: 3rem 1rem;
-      padding-left: 4rem;
-      line-height: 1.5;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      color: #000000;
-      margin-bottom: 1.5rem;
-      margin-left: 0;
+    /* ── Header Ticker ── */
+    .header {
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid rgba(28, 28, 28, 0.08);
+      background: rgba(28, 28, 28, 0.03);
+    }
+
+    .ticker {
+      display: flex;
+      animation: ticker 30s linear infinite;
+    }
+
+    .ticker:hover {
+      animation-play-state: paused;
+    }
+
+    .ticker-track {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0 2.4rem;
+    }
+
+    .ticker-symbol {
+      font-size: 1.15rem;
       font-weight: 600;
-      letter-spacing: -0.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgb(28, 28, 28);
     }
 
-    p.description {
-      max-width: 600px;
-      text-align: left;
-      margin-bottom: 2rem;
-      line-height: 1.6;
-      font-style: normal;
-      color: #000000;
-      padding-left: 0;
-      border-left: none;
-      white-space: pre-line;
-      margin-left: 0;
+    .ticker-price {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: rgb(80, 80, 80);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .ticker-change {
+      font-size: 1.05rem;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .ticker-change.up {
+      color: rgb(34, 197, 94);
+    }
+
+    .ticker-change.down {
+      color: rgb(239, 68, 68);
+    }
+
+    .ticker-sep {
+      width: 3px;
+      height: 3px;
+      background: rgba(28, 28, 28, 0.25);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .ticker-loading {
+      font-size: 1.15rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: rgb(120, 120, 120);
+      padding: 0 2rem;
+    }
+
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── Hero Name ── */
+    .hero {
+      text-align: center;
+      padding: 4rem 4rem 0;
+      position: relative;
+    }
+
+    .hero-name {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-name .first {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(8rem, 14vw, 18rem);
+      letter-spacing: -0.02em;
+      line-height: 0.85;
+    }
+
+    .hero-name .last {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(8rem, 14vw, 18rem);
+      letter-spacing: -0.04em;
+      line-height: 0.85;
+    }
+
+    /* ── Navigation Row ── */
+    .nav-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 4rem 4rem 2rem;
+      max-width: 100%;
+    }
+
+    .nav-item {
+      text-decoration: none;
+      color: rgb(28, 28, 28);
+      text-align: center;
+      transition: opacity 0.3s ease;
+      cursor: pointer;
+    }
+
+    .nav-item:hover {
+      opacity: 0.5;
+    }
+
+    .nav-item .num {
+      display: block;
       font-size: 1.1rem;
+      margin-bottom: 0.4rem;
       font-weight: 400;
     }
 
-    .links {
-      margin-left: 0;
-    }
-
-    .links a {
+    .nav-item .label {
       display: block;
-      margin: 0.5rem 0;
-      color: #0066cc;
-      text-decoration: none;
-      font-size: 1.1rem;
-      font-weight: bold;
-      letter-spacing: -0.2px;
+      font-size: 1.5rem;
+      font-weight: 500;
     }
 
-    .links a:hover {
-      color: #004d99;
+    .nav-copyright {
+      font-size: 1.2rem;
+      align-self: center;
+    }
+
+    /* ── Content Section (image + text blocks) ── */
+    .content {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      align-items: center;
+      padding: 2rem 4rem 4rem;
+      gap: 4rem;
+      flex: 1;
+    }
+
+    .text-block {
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 500;
+      line-height: 1.6;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      max-width: 30rem;
+    }
+
+    .text-block-left {
+      justify-self: start;
+    }
+
+    .text-block-right {
+      justify-self: end;
+    }
+
+    .text-block .sparkle {
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .illustration {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .illustration img {
+      max-width: 100%;
+      max-height: 50rem;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      opacity: 0.85;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 3rem 4rem 4rem;
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── Modal Overlay ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(28, 28, 28, 0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .modal-overlay.active {
       opacity: 1;
+      visibility: visible;
+    }
+
+    /* ── Modal Content ── */
+    .modal {
+      background: rgb(245, 245, 245);
+      border-radius: 2.4rem;
+      padding: 4.8rem;
+      max-width: 56rem;
+      width: 90%;
+      position: relative;
+      transform: translateY(6rem) scale(0.9);
+      opacity: 0;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+      box-shadow: 0 2.4rem 6rem rgba(0, 0, 0, 0.12);
+    }
+
+    .modal-overlay.active .modal {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 2rem;
+      right: 2.4rem;
+      background: none;
+      border: none;
+      font-size: 2.4rem;
+      cursor: pointer;
+      color: rgb(28, 28, 28);
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+
+    .modal-close:hover {
+      background: rgba(28, 28, 28, 0.08);
+    }
+
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 3.2rem;
+      margin-bottom: 2.4rem;
+      font-weight: 400;
+    }
+
+    .modal-body {
+      font-size: 1.5rem;
+      line-height: 1.7;
+      color: rgb(60, 60, 60);
+    }
+
+    .modal-body p {
+      margin-bottom: 1.6rem;
+    }
+
+    .modal-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .modal-body a {
+      color: rgb(28, 28, 28);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgb(28, 28, 28);
+      transition: opacity 0.2s ease;
+    }
+
+    .modal-body a:hover {
+      opacity: 0.5;
+    }
+
+    .modal-divider {
+      width: 4rem;
+      height: 1px;
+      background: rgba(28, 28, 28, 0.2);
+      margin: 2.4rem 0;
+    }
+
+    .modal-tag {
+      display: inline-block;
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.4rem;
+      border: 1px solid rgba(28, 28, 28, 0.15);
+      border-radius: 10rem;
+      margin-right: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    /* ── Investment Grid ── */
+    .investment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.4rem;
+    }
+
+    .investment-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.6rem;
+      padding: 2.8rem 1.6rem;
+      border-radius: 1.6rem;
+      background: rgb(38, 38, 38);
+      transition: background 0.25s ease, transform 0.25s ease;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .investment-card:hover {
+      background: rgb(50, 50, 50);
+      transform: translateY(-2px);
+    }
+
+    .investment-card img {
+      width: 11rem;
+      height: 11rem;
+      object-fit: contain;
+      mix-blend-mode: screen;
+    }
+
+    .investment-card span {
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: rgb(235, 235, 235);
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .investment-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.6rem;
+      }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .header {
+        padding: 2rem 2.4rem;
+      }
+
+      .hero {
+        padding: 3rem 2.4rem 0;
+      }
+
+      .hero-name {
+        gap: 1rem;
+      }
+
+      .nav-row {
+        padding: 3rem 2.4rem 2rem;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+      }
+
+      .content {
+        grid-template-columns: 1fr;
+        padding: 2rem 2.4rem;
+        gap: 3rem;
+      }
+
+      .text-block-left,
+      .text-block-right {
+        justify-self: center;
+      }
+
+      .illustration {
+        order: -1;
+      }
+
+      .footer {
+        padding: 2rem 2.4rem 3rem;
+      }
+
+      .modal {
+        padding: 3.2rem;
+        border-radius: 2rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        flex-direction: column;
+        gap: 0.8rem;
+        text-align: center;
+      }
+
+      .hero-name .first,
+      .hero-name .last {
+        font-size: clamp(5rem, 16vw, 8rem);
+      }
+
+      .nav-row {
+        gap: 1.6rem;
+      }
+
+      .modal {
+        padding: 2.4rem;
+        width: 95%;
+      }
+
+      .modal-title {
+        font-size: 2.4rem;
+      }
     }
   </style>
 </head>
 <body>
-  <p class="description">
-    Hi I'm Gerard
-    
-    I'm based in Denver and invest in early-stage web3 startups
 
-    I'm focused on understanding the value acrrual of decentralized protocols, and how the financial world is beginning to leverage crypto rails
+  <!-- Header Ticker -->
+  <header class="header">
+    <div class="ticker" id="ticker">
+      <div class="ticker-track" id="ticker-track-1">
+        <span class="ticker-loading">Loading live prices...</span>
+      </div>
+      <div class="ticker-track" id="ticker-track-2" aria-hidden="true"></div>
+    </div>
+  </header>
 
-    If you're building in this space, I'd love to connect
-  </p>
-  <div class="links">
-    <a href="https://www.linkedin.com/in/gerard-barile/" target="_blank"> > LinkedIn</a>
-    <a href="https://x.com/0xGeebz" target="_blank"> > X</a>
-    <a href="https://magicinternetmoney.beehiiv.com/" target="_blank"> > Blog</a>
+  <!-- Hero Name -->
+  <section class="hero">
+    <div class="hero-name">
+      <span class="first">Gerard</span>
+      <span class="last">Barile</span>
+    </div>
+  </section>
+
+  <!-- Navigation Row -->
+  <nav class="nav-row">
+    <a class="nav-item" onclick="openModal('about')">
+      <span class="num">01</span>
+      <span class="label">About</span>
+    </a>
+    <a class="nav-item" href="https://www.linkedin.com/in/gerard-barile/" target="_blank">
+      <span class="num">02</span>
+      <span class="label">LinkedIn</span>
+    </a>
+    <a class="nav-item" href="https://x.com/0xGeebz" target="_blank">
+      <span class="num">03</span>
+      <span class="label">X</span>
+    </a>
+    <a class="nav-item" href="https://magicinternetmoney.beehiiv.com/" target="_blank">
+      <span class="num">04</span>
+      <span class="label">Blog</span>
+    </a>
+    <a class="nav-item" onclick="openModal('contact')">
+      <span class="num">05</span>
+      <span class="label">Contact</span>
+    </a>
+    <a class="nav-item" onclick="openModal('investments')">
+      <span class="num">06</span>
+      <span class="label">Investments</span>
+    </a>
+  </nav>
+
+  <!-- Content: Text Blocks + Illustration -->
+  <section class="content">
+    <div class="text-block text-block-left">
+      <span class="sparkle">✦</span>
+      An inquisitive generalist drawn to emerging technology and the people building it, especially at the earliest, messiest stages.
+    </div>
+    <div class="illustration">
+      <img src="darth.png" alt="Darth Vader illustration" />
+    </div>
+    <div class="text-block text-block-right">
+      <span class="sparkle">✦</span>
+      Investor in crypto and blockchain since 2015, with experience spanning multiple industries and disciplines.
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    Just an investor. From Denver with love.
+    <div style="margin-top: 1.2rem; font-size: 1.1rem; opacity: 0.5;">©2026</div>
+  </footer>
+
+  <!-- ── Modals ── -->
+
+  <!-- About Modal -->
+  <div class="modal-overlay" id="modal-about" onclick="closeModalOutside(event, 'about')">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('about')">✕</button>
+      <div class="modal-title">About</div>
+      <div class="modal-body">
+        <p>Hi, I'm Gerard — a Denver-based venture investor focused on the earliest stages of web3.</p>
+        <div class="modal-divider"></div>
+        <p>My background spans finance, management consulting, and product development. That generalist path shaped how I think about technology, teams, and what it takes to build something lasting.</p>
+        <p>Today I spend my time understanding how value accrues across decentralized protocols, and how the financial world is beginning to leverage crypto rails. I'm drawn to founders who think deeply about protocol design and long-term value creation.</p>
+        <div class="modal-divider"></div>
+        <div>
+          <span class="modal-tag">Web3</span>
+          <span class="modal-tag">DeFi</span>
+          <span class="modal-tag">Early-Stage</span>
+          <span class="modal-tag">Crypto Rails</span>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- Contact Modal -->
+  <div class="modal-overlay" id="modal-contact" onclick="closeModalOutside(event, 'contact')">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('contact')">✕</button>
+      <div class="modal-title">Contact</div>
+      <div class="modal-body">
+        <p>Feel free to send me a dm on <a href="https://x.com/0xGeebz" target="_blank">X</a> or <a href="https://www.linkedin.com/in/gerard-barile/" target="_blank">LinkedIn</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Investments Modal -->
+  <div class="modal-overlay" id="modal-investments" onclick="closeModalOutside(event, 'investments')">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('investments')">✕</button>
+      <div class="modal-title">Investments</div>
+      <div class="modal-body">
+        <div class="investment-grid">
+          <a class="investment-card" href="https://www.ether.fi/" target="_blank">
+            <img src="investments/ether.fi.png" alt="Ether.fi logo" />
+            <span>Ether.fi</span>
+          </a>
+          <a class="investment-card" href="https://usd.ai/" target="_blank">
+            <img src="investments/USDai.png" alt="USD.ai logo" />
+            <span>USD.ai</span>
+          </a>
+          <a class="investment-card" href="https://datahive.ai/" target="_blank">
+            <img src="investments/DataHiveai.png" alt="DataHive.ai logo" />
+            <span>DataHive.ai</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── Modal Functions ──
+    function openModal(id) {
+      document.getElementById('modal-' + id).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(id) {
+      document.getElementById('modal-' + id).classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function closeModalOutside(event, id) {
+      if (event.target === event.currentTarget) {
+        closeModal(id);
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.active').forEach(function(modal) {
+          modal.classList.remove('active');
+        });
+        document.body.style.overflow = '';
+      }
+    });
+
+    // ── Live Price Ticker ──
+    var ASSETS = [
+      { symbol: 'BTC', geckoId: 'bitcoin' },
+      { symbol: 'ETH', geckoId: 'ethereum' },
+      { symbol: 'SOL', geckoId: 'solana' },
+      { symbol: 'DOGE', geckoId: 'dogecoin' },
+      { symbol: 'S&P 500', yahooId: '^GSPC' },
+      { symbol: 'DOW', yahooId: '^DJI' },
+      { symbol: 'NASDAQ', yahooId: '^IXIC' }
+    ];
+
+    function formatPrice(price) {
+      if (price >= 1000) return '$' + price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      if (price >= 1) return '$' + price.toFixed(2);
+      return '$' + price.toFixed(4);
+    }
+
+    function buildTickerHTML(assets) {
+      return assets.map(function(a, i) {
+        var changeClass = a.change >= 0 ? 'up' : 'down';
+        var changeSign = a.change >= 0 ? '+' : '';
+        var changeText = a.change !== null ? changeSign + a.change.toFixed(2) + '%' : '—';
+        var priceText = a.price !== null ? formatPrice(a.price) : '—';
+        var sep = i < assets.length - 1 ? '<span class="ticker-sep"></span>' : '';
+        return '<span class="ticker-item">' +
+          '<span class="ticker-symbol">' + a.symbol + '</span>' +
+          '<span class="ticker-price">' + priceText + '</span>' +
+          '<span class="ticker-change ' + changeClass + '">' + changeText + '</span>' +
+          '</span>' + sep;
+      }).join('');
+    }
+
+    function renderTicker(assets) {
+      var html = buildTickerHTML(assets);
+      document.getElementById('ticker-track-1').innerHTML = html;
+      document.getElementById('ticker-track-2').innerHTML = html;
+    }
+
+    async function fetchCryptoPrices() {
+      try {
+        var ids = ASSETS.filter(function(a) { return a.geckoId; }).map(function(a) { return a.geckoId; }).join(',');
+        var res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=' + ids + '&vs_currencies=usd&include_24hr_change=true');
+        var data = await res.json();
+        return ASSETS.filter(function(a) { return a.geckoId; }).map(function(a) {
+          var d = data[a.geckoId];
+          return {
+            symbol: a.symbol,
+            price: d ? d.usd : null,
+            change: d ? d.usd_24h_change : null
+          };
+        });
+      } catch (e) {
+        return ASSETS.filter(function(a) { return a.geckoId; }).map(function(a) {
+          return { symbol: a.symbol, price: null, change: null };
+        });
+      }
+    }
+
+    async function fetchStockPrices() {
+      try {
+        var symbols = ASSETS.filter(function(a) { return a.yahooId; }).map(function(a) { return a.yahooId; }).join(',');
+        var proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent('https://query1.finance.yahoo.com/v7/finance/quote?symbols=' + symbols);
+        var res = await fetch(proxyUrl);
+        var data = await res.json();
+        var quotes = data.quoteResponse.result;
+        return ASSETS.filter(function(a) { return a.yahooId; }).map(function(a) {
+          var q = quotes.find(function(quote) { return quote.symbol === a.yahooId; });
+          return {
+            symbol: a.symbol,
+            price: q ? q.regularMarketPrice : null,
+            change: q ? q.regularMarketChangePercent : null
+          };
+        });
+      } catch (e) {
+        return ASSETS.filter(function(a) { return a.yahooId; }).map(function(a) {
+          return { symbol: a.symbol, price: null, change: null };
+        });
+      }
+    }
+
+    async function loadPrices() {
+      var results = await Promise.all([fetchCryptoPrices(), fetchStockPrices()]);
+      var allPrices = results[0].concat(results[1]);
+      renderTicker(allPrices);
+    }
+
+    // Load on page load, refresh every 60 seconds
+    loadPrices();
+    setInterval(loadPrices, 60000);
+  </script>
+
 </body>
 </html>
