@@ -174,7 +174,7 @@
 
     .nav-item .label {
       display: block;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-weight: 500;
     }
 
@@ -462,7 +462,19 @@
       }
 
       .nav-row {
-        gap: 1.6rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.8rem 1rem;
+        padding: 3rem 2.4rem 2rem;
+      }
+
+      .nav-item .num {
+        font-size: 1.2rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .nav-item .label {
+        font-size: 2rem;
       }
 
       .modal {
