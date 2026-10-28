@@ -343,7 +343,22 @@
       padding: 2.8rem 2.2rem 3rem;
     }
 
-    .net-panel h2 { color: #f4f4f4; }
+    .build-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+
+    .net-panel h3 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(3.2rem, 4vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: #f4f4f4;
+      margin-bottom: 1.2rem;
+    }
 
     .net-panel p {
       max-width: 38rem;
@@ -424,7 +439,19 @@
       .logo-row { grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
       .logo-link { min-height: 12rem; }
       .logo-link img { height: 8rem; }
-      .net-panel { padding: 4.8rem 4.4rem 5.2rem; border-radius: 2.4rem; }
+      .build-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.6rem;
+        align-items: stretch;
+      }
+      .net-panel {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 4rem 3.2rem 4.4rem;
+        border-radius: 2.4rem;
+      }
+      .net-panel p { flex: 1; }
       .net-panel .btn { min-height: 5.2rem; padding-inline: 2rem; font-size: 1.7rem; }
     }
 
@@ -455,7 +482,7 @@
         color: #000;
         border: 1px solid #000;
       }
-      .net-panel h2, .net-panel p { color: #000; }
+      .net-panel h3, .net-panel p { color: #000; }
       a { text-decoration: underline; }
     }
   </style>
@@ -466,6 +493,7 @@
   <header class="site-header">
     <div class="wrap">
       <nav class="site-nav" aria-label="Primary">
+        <a href="#building">Building</a>
         <a href="#about">About</a>
         <a href="#focus">Focus</a>
         <a href="#investments">Investments</a>
@@ -493,9 +521,25 @@
             <a class="btn btn-primary" href="https://notenoughtime.gerardbarile.com/" target="_blank" rel="noopener noreferrer" aria-describedby="net-note">Not Enough Time<span class="sr-only"> (opens in a new tab)</span></a>
             <a class="btn btn-secondary" href="https://x.com/GerardBarile" target="_blank" rel="noopener noreferrer">DM me on X<span class="sr-only"> (opens in a new tab)</span></a>
           </div>
-          <p class="action-note" id="net-note">Daily digest of the investing and tech shows that matter.</p>
+          <p class="action-note" id="net-note">A Wednesday and Sunday digest of the investing and tech shows that matter.</p>
         </div>
       </header>
+
+      <section class="section" id="building" aria-labelledby="building-title">
+        <h2 id="building-title">What I'm Building</h2>
+        <div class="build-grid">
+          <article class="net-panel">
+            <h3>Not Enough Time</h3>
+            <p>A Wednesday and Sunday digest of the investing and tech shows that matter.</p>
+            <a class="btn btn-light" href="https://notenoughtime.gerardbarile.com/" target="_blank" rel="noopener noreferrer">Not Enough Time<span class="sr-only"> (opens in a new tab)</span></a>
+          </article>
+          <article class="net-panel">
+            <h3>Magic Internet Money</h3>
+            <p>Longer writing. Essays on crypto, markets, and the rails underneath.</p>
+            <a class="btn btn-light" href="https://magicinternetmoney.beehiiv.com/" target="_blank" rel="noopener noreferrer">Magic Internet Money<span class="sr-only"> (opens in a new tab)</span></a>
+          </article>
+        </div>
+      </section>
 
       <section class="section" id="focus" aria-labelledby="focus-title">
         <h2 id="focus-title">Focus</h2>
@@ -526,11 +570,12 @@
       <section class="section" id="about" aria-labelledby="about-title">
         <h2 id="about-title">About</h2>
         <div class="prose">
-          <p>Hi, I am Gerard — a Denver-based Venture Principal. My lanes are early crypto where rails meet real financial infrastructure, the boring layers that make robots and physical AI economically real, and American reindustrialization — energy, housing, manufacturing, and the bottlenecks that decide whether any of it scales.</p>
-          <p>I came up through finance, consulting, and data. That generalist path is the point: mechanisms, incentives, and bottlenecks over narratives.</p>
-          <p>What I publish: forecasts with a date, explainers with a number you can check, and the occasional contrarian take when the data disagrees with the room. If you are building settlement, compliance, robot data or actuation, energy, housing tech, manufacturing tooling, or institutional rails — <a href="https://x.com/GerardBarile" target="_blank" rel="noopener noreferrer">DM me on X</a>. If you are fundraising on vibes, do not.</p>
+          <p>Hi, I am Gerard — a Denver-based Venture Principal.</p>
+          <p>I came up through public accounting, management consulting, and data and analytics, and later product work on blockchain data. A lot of that work, once I was managing, was leading a team and helping an organization change how it actually operates. I care more about whether the change held than about how it sounds.</p>
+          <p>I now lead early-stage crypto investing. I also write, so smart generalists can see what is coming in robotics, physical AI, and American reindustrialization before it is consensus.</p>
         </div>
-        <p class="placeholder">[Optional — fill before publish]: Years in crypto venture / check size range / stage focus.</p>
+        <p class="placeholder">[placeholder — add one or two accomplishments you want named: the team, the organization, and what changed. No headcount, dollars, or years unless you type them.]</p>
+        <p class="placeholder">[placeholder — years in crypto venture / check size range / stage focus.]</p>
       </section>
 
       <section class="section" id="investments" aria-labelledby="investments-title">
@@ -548,17 +593,9 @@
         </div>
       </section>
 
-      <section class="section" id="not-enough-time" aria-labelledby="net-title">
-        <div class="net-panel">
-          <h2 id="net-title">Not Enough Time</h2>
-          <p>Daily digest of the investing and tech shows that matter.</p>
-          <a class="btn btn-light" href="https://notenoughtime.gerardbarile.com/" target="_blank" rel="noopener noreferrer">Not Enough Time<span class="sr-only"> (opens in a new tab)</span></a>
-        </div>
-      </section>
-
       <section class="section" id="content" aria-labelledby="content-title">
         <h2 id="content-title">Content</h2>
-        <p class="lede">Where I publish. Not Enough Time is the daily brief. @GerardBarile is the primary account for crypto, robotics, physical AI, and American reindustrialization. @0xGeebz is the personal / markets voice. Longer writing lives on Magic Internet Money.</p>
+        <p class="lede">Where I publish. Not Enough Time goes out every Wednesday and Sunday. @GerardBarile is where I write on crypto, robotics, physical AI, and American reindustrialization. Longer writing lives on Magic Internet Money.</p>
         <ul class="hub-list">
           <li>
             <a href="https://notenoughtime.gerardbarile.com/" target="_blank" rel="noopener noreferrer">
@@ -570,13 +607,6 @@
           <li>
             <a href="https://x.com/GerardBarile" target="_blank" rel="noopener noreferrer">
               <span class="hub-name">@GerardBarile</span>
-              <span class="ext" aria-hidden="true">↗</span>
-              <span class="sr-only"> (opens in a new tab)</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://x.com/0xGeebz" target="_blank" rel="noopener noreferrer">
-              <span class="hub-name">@0xGeebz</span>
               <span class="ext" aria-hidden="true">↗</span>
               <span class="sr-only"> (opens in a new tab)</span>
             </a>
