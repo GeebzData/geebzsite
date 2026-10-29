@@ -16,7 +16,7 @@
   <meta name="twitter:title" content="Gerard Barile — Venture Capital Principal | Neobanking, Physical AI, American Reindustrialization">
   <meta name="twitter:description" content="Venture Capital Principal at Wave Digital Assets in Denver. I back early-stage crypto founders and spend a lot of time thinking about neobanking, physical AI, and American reindustrialization. Read Not Enough Time. Founders: DM @GerardBarile.">
   <meta name="twitter:image" content="https://gerardbarile.com/og.png">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="darth.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -154,6 +154,30 @@
       font-size: 1.55rem;
       line-height: 1.5;
       text-wrap: pretty;
+    }
+
+    .hero-row {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.4rem;
+      margin-top: 2rem;
+    }
+
+    .hero-copy { max-width: 40em; }
+
+    .hero-copy .stake { margin-top: 0; }
+
+    .hero-portrait {
+      order: -1;
+      margin: 0 0 0.8rem;
+      align-self: center;
+    }
+
+    .hero-portrait img {
+      width: 22rem;
+      height: auto;
+      mix-blend-mode: multiply;
     }
 
     .btn {
@@ -366,6 +390,21 @@
       .section { padding: 6.4rem 0; }
       .stake { margin-top: 2.4rem; }
       .subhead { margin-top: 1.4rem; font-size: 1.7rem; }
+      .hero-row {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 4rem;
+        margin-top: 2.8rem;
+      }
+      .hero-copy { flex: 1; min-width: 0; }
+      .hero-portrait {
+        order: 0;
+        flex: none;
+        margin: 0;
+        align-self: center;
+      }
+      .hero-portrait img { width: 34rem; }
       .focus-grid {
         grid-template-columns: 1fr 1fr;
         column-gap: 4rem;
@@ -442,8 +481,15 @@
           <span class="first">Gerard</span>
           <span class="last">Barile</span>
         </h1>
-        <p class="stake">Venture Capital Principal at Wave Digital Assets in Denver.</p>
-        <p class="subhead">I back early-stage crypto founders and spend a lot of time thinking about neobanking, physical AI, and American reindustrialization.</p>
+        <div class="hero-row">
+          <div class="hero-copy">
+            <p class="stake">Venture Capital Principal at Wave Digital Assets in Denver.</p>
+            <p class="subhead">I back early-stage crypto founders and spend a lot of time thinking about neobanking, physical AI, and American reindustrialization.</p>
+          </div>
+          <figure class="hero-portrait">
+            <img src="darth.png" alt="Cartoon portrait of Gerard Barile" width="2048" height="2048">
+          </figure>
+        </div>
       </header>
 
       <section class="section" id="building" aria-labelledby="building-title">
