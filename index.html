@@ -112,21 +112,6 @@
 
     .site-nav a:hover { text-decoration: underline; text-underline-offset: 0.28em; }
 
-    .site-nav a.nav-cta {
-      background: #1c1c1c;
-      color: #f4f4f4;
-      border-radius: 999px;
-      padding: 0 1.4rem;
-      font-weight: 600;
-      order: -1;
-    }
-
-    .site-nav a.nav-cta:hover {
-      background: #000;
-      color: #fff;
-      text-decoration: none;
-    }
-
     .hero { padding: 2.4rem 0 3.2rem; }
 
     .hero-name {
@@ -169,29 +154,6 @@
       font-size: 1.55rem;
       line-height: 1.5;
       text-wrap: pretty;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.8rem;
-      margin-top: 2rem;
-    }
-
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.8rem 1rem;
-    }
-
-    .action-note {
-      max-width: 36rem;
-      margin: 0;
-      color: #3a3a3a;
-      font-size: 1.4rem;
-      line-height: 1.45;
     }
 
     .btn {
@@ -404,7 +366,6 @@
       .section { padding: 6.4rem 0; }
       .stake { margin-top: 2.4rem; }
       .subhead { margin-top: 1.4rem; font-size: 1.7rem; }
-      .hero-actions { margin-top: 2.6rem; }
       .focus-grid {
         grid-template-columns: 1fr 1fr;
         column-gap: 4rem;
@@ -438,7 +399,6 @@
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
       }
-      .site-nav a.nav-cta { order: 0; }
       section[id] { scroll-margin-top: 7rem; }
       .focus-grid { grid-template-columns: 1fr 1fr 1fr; }
     }
@@ -468,16 +428,9 @@
   <header class="site-header">
     <div class="wrap">
       <nav class="site-nav" aria-label="Primary">
-        <a href="#building">Building</a>
+        <a href="#building">What I'm Building</a>
         <a href="#about">About</a>
-        <a href="#focus">Focus</a>
-        <a href="#investments">Investments</a>
-        <a class="nav-cta" href="https://notenoughtime.gerardbarile.com/" target="_blank" rel="noopener noreferrer">Not Enough Time<span class="sr-only"> (opens in a new tab)</span></a>
-        <a href="#content">Content</a>
-        <a href="https://magicinternetmoney.beehiiv.com/" target="_blank" rel="noopener noreferrer">Writing (Beehiiv)<span class="sr-only"> (opens in a new tab)</span></a>
         <a href="#contact">Contact</a>
-        <a href="https://x.com/GerardBarile" target="_blank" rel="noopener noreferrer">X<span class="sr-only"> (opens in a new tab)</span></a>
-        <a href="https://www.linkedin.com/in/gerard-barile/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>
       </nav>
     </div>
   </header>
@@ -489,15 +442,8 @@
           <span class="first">Gerard</span>
           <span class="last">Barile</span>
         </h1>
-        <p class="stake">I'm Gerard Barile, a Venture Capital Principal at Wave Digital Assets in Denver.</p>
+        <p class="stake">Venture Capital Principal at Wave Digital Assets in Denver.</p>
         <p class="subhead">I back early-stage crypto founders and spend a lot of time thinking about neobanking, physical AI, and American reindustrialization.</p>
-        <div class="hero-actions">
-          <div class="btn-row">
-            <a class="btn btn-primary" href="https://notenoughtime.gerardbarile.com/" target="_blank" rel="noopener noreferrer" aria-describedby="net-note">Not Enough Time<span class="sr-only"> (opens in a new tab)</span></a>
-            <a class="btn btn-secondary" href="https://x.com/GerardBarile" target="_blank" rel="noopener noreferrer">DM me on X<span class="sr-only"> (opens in a new tab)</span></a>
-          </div>
-          <p class="action-note" id="net-note">A Wednesday and Sunday digest of the investing and tech shows that matter.</p>
-        </div>
       </header>
 
       <section class="section" id="building" aria-labelledby="building-title">
@@ -540,7 +486,6 @@
       <section class="section" id="about" aria-labelledby="about-title">
         <h2 id="about-title">About</h2>
         <div class="prose">
-          <p>Hi, I am Gerard — a Denver-based Venture Principal.</p>
           <p>I came up through public accounting, management consulting, and data and analytics, and later product work on blockchain data. A lot of that work, once I was managing, was leading a team and helping an organization change how it actually operates. I care more about whether the change held than about how it sounds.</p>
           <p>I now lead early-stage crypto investing. I also write, so smart generalists can see what is coming in robotics, physical AI, and American reindustrialization before it is consensus.</p>
         </div>
