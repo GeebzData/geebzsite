@@ -426,6 +426,7 @@
         border-radius: 2.4rem;
       }
       .net-panel p { flex: 1; }
+      .net-panel:last-child:nth-child(odd) { grid-column: 1 / -1; }
       .net-panel .btn { min-height: 5.2rem; padding-inline: 2rem; font-size: 1.7rem; }
     }
 
@@ -440,6 +441,8 @@
       }
       section[id] { scroll-margin-top: 7rem; }
       .focus-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .build-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .net-panel:last-child:nth-child(odd) { grid-column: auto; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -504,6 +507,11 @@
             <h3>Magic Internet Money</h3>
             <p>Longer writing. Essays on crypto, markets, and the rails underneath.</p>
             <a class="btn btn-light" href="https://magicinternetmoney.beehiiv.com/" target="_blank" rel="noopener noreferrer">Magic Internet Money<span class="sr-only"> (opens in a new tab)</span></a>
+          </article>
+          <article class="net-panel">
+            <h3>Made in America</h3>
+            <p>An interactive map of American manufacturing since 1990. Jobs, pay, and new factory building, county by county.</p>
+            <a class="btn btn-light" href="https://madeinamerica.gerardbarile.com/" target="_blank" rel="noopener noreferrer">Made in America<span class="sr-only"> (opens in a new tab)</span></a>
           </article>
         </div>
       </section>
